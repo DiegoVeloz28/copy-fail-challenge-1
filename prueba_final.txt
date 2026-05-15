@@ -1,0 +1,2 @@
+algif_aead             12288  0
+af_alg                 28672  1 algif_aead
