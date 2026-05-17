@@ -1,0 +1,41 @@
+    1  sudo apt update
+    2  apt update
+    3  apt install git gnupg
+    4  gpg --full-generate_key
+    5  gpg --full-generate-key
+    6  gpg --list-keys
+    7  gpg --full-generate-key
+    8  mkdir intro-unix-proyecto1
+    9  cd mkdir intro-unix-proyecto1
+   10  cd intro-unix-proyecto1
+   11  mkdir seccion1 seccion2 seccion3 seccion4
+   12  git init
+   13  exit
+   14  df -h
+   15  apt install task-kde-desktop
+   16  lvreduce -L -10G -r /dev/mapper/debian--vg-home
+   17  exit
+   18  apt update
+   19  apt install buil-essencials linux-headers-$(uname -r) git
+   20  apt install build-essentials linux-headers-$(uname -r) git
+   21  apt install build-essential linux-headers-$(uname -r) git
+   22  mkdir ~/reto_copyfail
+   23  cd ~/reto_copyfail
+   24  nano vulnerable_module.c
+   25  make 
+   26  [200~exit # Sal de dave si estás ahí
+   27  modprobe af_alg
+   28  modprobe algif_aead
+   29  lsmod | grep algif_aead
+   30  cat /home/dave/exploit_copyfail.py
+   31  su dave
+   32  cd /home/dave
+   33  echo "Test_Exploit_CopyFail" > /dev/copyfail_dev
+   34  insmod /root/reto_copyfail/vulnerable_module.ko
+   35  mknod /dev/copyfail_dev c 240 0
+   36  chmod 666 /dev/copyfail_dev
+   37  su dave
+   38  echo "Payload_Prueba_Concepto_CopyFail" > /dev/copyfail_dev
+   39  echo "Prueba de Concepto Final" > /dev/copyfail_dev
+   40  dmesg -T | tail -n 15
+   41  history > comandos_totales_examen.txt
