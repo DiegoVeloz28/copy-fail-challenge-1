@@ -1,0 +1,86 @@
+  149  make clean
+  150  make
+  151  rmmod vulnerable_module 2>/dev/null
+  152  insmod vulnerable_module.ko
+  153  chmod 666 /dev/copyfail_dev
+  154  mknod /dev/copyfail_dev c 240 0
+  155  chmod 666 /dev/copyfail_dev
+  156  su dave
+  157  nano vulnerable_module.c
+  158  su dave
+  159  cat /proc/devices | grep copyfail
+  160  dmesg | tail -n 20
+  161  rmmod vulnerable_module 2>/dev/null
+  162  rm -f /dev/copyfail_dev
+  163  insmod vulnerable_module.ko
+  164  mknod /dev/copyfail_dev c 240 0
+  165  chmod 666 /dev/copyfail_dev
+  166  su dave
+  167  insmod vulnerable_module.ko
+  168  rm -f /dev/copyfail_dev
+  169  mknod /dev/copyfail_dev c 240 0
+  170  chmod 666 /dev/copyfail_dev
+  171  chmod 666 /dev/copyfail_dev
+  172  mknod /dev/copyfail_dev c 240 0
+  173  rm -f /dev/copyfail_dev
+  174  mknod /dev/copyfail_dev c 240 0
+  175  chmod 666 /dev/copyfail_devs
+  176  chmod 666 /dev/copyfail_dev
+  177  su dave
+  178  nano vulnerable_module.c
+  179  make clean
+  180  make
+  181  rmmod vulnerable_module 2>/dev/null
+  182  insmod vulnerable_module.ko
+  183  dmesg | tail -n 5
+  184  rm -f /dev/copyfail_dev
+  185  mknod /dev/copyfail_dev c 235 0
+  186  chmod 666 /dev/copyfail_dev
+  187  su dave
+  188  history | tail -n 40 > /root/reto_copyfail/historial_completo.txt
+exit
+su -
+python3 exploit_copyfail.py
+exit
+python3 /home/dave/exploit_copyfail.py
+exit
+python3 
+python3 /home/dave/exploit_copyfail.py
+exit   # Para salir de 'dave' si seguías ahí
+python3 /home/dave/exploit_copyfail.py
+cd /home/dave
+python3 /home/dave/exploit_copyfail.py
+exit
+dmesg | tail -n 5
+exit   # Para salir de dave (veo que estás como dave@debian en la segunda captura)
+su -
+nano Makefile
+make
+cd ~/reto_copyfail
+find ~ -name "vulnerable_module.c"
+su - 
+su -
+cd /home/dave
+echo "explotar" > /dev/copyfail_dev
+exit
+cd 
+echo "explotar" > /dev/copyfail_dev
+exit
+cd
+mknod /dev/copyfail_dev c 240 0
+chmod 666 /dev/copyfail_dev
+exit
+cd /home/dave
+echo "prueba" > /dev/copyfail_dev
+exit
+cd /home/dave
+echo "prueba" > /dev/copyfail_dev
+id
+python3 /home/dave/exploit_copyfail.py
+exit
+
+--- COMANDOS EJECUTADOS COMO USUARIO DAVE ---
+
+cd /home/dave
+echo "prueba" > /dev/copyfail_dev
+id
